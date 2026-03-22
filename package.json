@@ -1,0 +1,56 @@
+{
+  "name": "tezgah",
+  "version": "1.0.0",
+  "description": "Claude Code skill kit for building production-ready SaaS apps — built for solopreneurs",
+  "keywords": [
+    "claude-code",
+    "claude",
+    "skills",
+    "saas",
+    "starter-kit",
+    "solopreneur",
+    "stripe",
+    "nextjs",
+    "typescript",
+    "authentication",
+    "payments",
+    "deployment",
+    "supabase",
+    "posthog",
+    "testing",
+    "seo",
+    "turkey",
+    "turkish"
+  ],
+  "homepage": "https://github.com/komunite/tezgah#readme",
+  "bugs": {
+    "url": "https://github.com/komunite/tezgah/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/komunite/tezgah.git"
+  },
+  "license": "MIT",
+  "author": "Fatih Guner <gunerfatih@gmail.com>",
+  "bin": {
+    "tezgah": "bin/tezgah.js"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "skills/",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node test/cli.test.js",
+    "lint": "eslint bin/ lib/ test/",
+    "prepublishOnly": "npm test"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

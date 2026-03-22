@@ -1,0 +1,86 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install devDependencies
+        run: npm install
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test CLI
+        run: npm test
+
+      - name: Verify all skills exist
+        run: |
+          for skill in saas-launcher saas-database saas-auth saas-payments saas-email saas-storage saas-landing-seo saas-legal saas-api-security saas-testing saas-analytics saas-deployment; do
+            if [ ! -f "skills/$skill/SKILL.md" ]; then
+              echo "FAIL: skills/$skill/SKILL.md not found"
+              exit 1
+            fi
+            echo "OK: skills/$skill/SKILL.md"
+          done
+
+      - name: Verify skill frontmatter
+        run: |
+          for skill in skills/*/SKILL.md; do
+            if ! head -1 "$skill" | grep -q "^---"; then
+              echo "FAIL: $skill missing frontmatter"
+              exit 1
+            fi
+            # Check name field exists
+            if ! grep -q "^name:" "$skill"; then
+              echo "FAIL: $skill missing name field"
+              exit 1
+            fi
+            # Check description field exists
+            if ! grep -q "^description:" "$skill"; then
+              echo "FAIL: $skill missing description field"
+              exit 1
+            fi
+            echo "OK: $skill"
+          done
+
+      - name: Verify cross-references
+        run: |
+          # Check that all skill references in launcher point to existing skills
+          LAUNCHER="skills/saas-launcher/SKILL.md"
+          REFS=$(grep -oP 'saas-[a-z-]+' "$LAUNCHER" | sort -u)
+          for ref in $REFS; do
+            if [ ! -d "skills/$ref" ]; then
+              echo "FAIL: $LAUNCHER references non-existent skill: $ref"
+              exit 1
+            fi
+            echo "OK: $ref exists"
+          done
+
+  publish-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Verify package
+        run: npm pack --dry-run

@@ -1,0 +1,36 @@
+name: Özellik Talebi
+description: Yeni özellik veya iyileştirme önerin
+title: "[Özellik]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Özellik talebiniz için teşekkürler!
+  - type: dropdown
+    id: type
+    attributes:
+      label: Talep Türü
+      options:
+        - Mevcut skill'e ekleme
+        - Yeni skill önerisi
+        - CLI iyileştirmesi
+        - Dokümantasyon
+        - Diğer
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Açıklama
+      description: Ne istiyorsunuz ve neden?
+      placeholder: |
+        Ne: ...
+        Neden: ...
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatifler
+      description: Düşündüğünüz alternatif çözümler var mı?
